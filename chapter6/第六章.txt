@@ -1,0 +1,209 @@
+6.2  import的使用
+6.2.1  import语句
+>>> from math import pi
+>>> print(pi)
+3.141592653589793
+
+>>> import math
+>>> print(math.pi)		#math.pi可以被输出
+3.141592653589793
+>>> print(math.sin(1))		#math.sin(1)可以被输出
+0.8414709848078965
+>>> print(math.exp(1))	#math.exp(1)可以被输出
+2.718281828459045
+>>> from math import pi
+>>> print (pi) 			#pi可以被输出
+3.141592653589793
+>>> print(sin(1))			#sin(1)不可以被输出
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sin' is not defined
+>>> print(exp(1))		#exp(1)不可以被输出
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'exp' is not defined
+
+>>> import math
+>>> print(math.pi)
+3.141592653589793
+>>> print(pi)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pi' is not defined
+>>> from math import pi
+>>> print(pi)
+3.141592653589793
+
+>>> from math import *
+>>> print(pi)				#pi可以被输出
+3.141592653589793
+>>> print(sin(1))				#sin(1)可以被输出
+0.8414709848078965
+>>> print(exp(1))			#exp(1)可以被输出
+2.718281828459045
+
+>>> import math as m
+>>> m.pi
+3.141592653589793
+
+>>> from math import pi as p
+>>> p
+3.141592653589793
+
+
+6.2.2  使用逗号输出
+>>> student='小智'
+>>> print('学生称呼：',student)
+学生称呼： 小智
+
+>>> greeting='大家好！'
+>>> intriduce='我叫小智，'
+>>> comefrom='我来自智慧城市。'
+>>> print(greeting,intriduce,comefrom)
+大家好！ 我叫小智， 我来自智慧城市。
+
+
+6.3.1  序列解包
+>>> x,y,z=1,2,3
+>>> print(x,y,z)
+1 2 3
+
+>>> x,y,z=1,2,3
+>>> x,y=y,x
+>>> print(x,y,z)
+2 1 3
+
+>>> nums=1,2,3
+>>> nums
+(1, 2, 3)
+>>> x,y,z=nums
+>>> x             #获得序列解开的值
+1
+>>> print(x,y,z)
+1 2 3
+
+>>> student={'name':'小萌','number':'000'}
+>>> key,value=student.popitem()
+>>> key
+'number'
+>>> value
+'000'
+
+>>> x,y,z=1,2,3
+>>> x,y,z
+(1, 2, 3)
+>>> x,y,z=1,2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: not enough values to unpack (expected 3, got 2)
+>>> x,y,z=1,2,3,4,5
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: too many values to unpack (expected 3)
+
+
+6.3.2  链式赋值
+>>> x=y=z=10
+>>> x
+10
+
+>>> x=10
+>>> y=x
+>>> y
+10
+
+
+6.3.3  增量赋值
+>>> x=5
+>>> x+=1   #加
+>>> x
+6
+>>> x-=2 #减
+>>> x
+4
+>>> x*=2 #乘
+>>> x
+8
+>>> x/=4  #除
+>>> x
+2.0
+
+>>> field ='Hello,'
+>>> field += 'world'
+>>> field
+'Hello,world'
+>>> field*=2
+>>> field
+'Hello,worldHello,world'
+
+
+6.5.1  布尔变量的作用
+>>> True
+True
+>>> False
+False
+>>> True == 1
+True
+>>> False == 0
+True
+>>> True+False+2
+3
+
+>>> bool('good good study')
+True
+>>> bool('')
+False
+>>> bool(3)
+True
+>>> bool(0)
+False
+>>> bool([1])
+True
+>>> bool([])
+False
+>>> bool()
+False
+
+
+6.5.6  更多操作
+1. is：同一性运算符
+>>> x=y=[1,2,3]
+>>> z=[1,2,3]
+>>> x==y
+True
+>>> x==z
+True
+>>> x is y
+True
+>>> x is z
+False
+
+>>> x=[1,2,3]
+>>> y=[1,5]
+>>> x is not y
+True
+>>> del x[2]
+>>> x
+[1, 2]
+>>> y[1]=2
+>>> y
+[1, 2]
+>>> x==y
+True
+>>> x is y
+False
+
+
+2. 比较字符串和序列
+>>> [1,2]<[2,1]
+True
+>>> [1,2]<[1,2]
+False
+>>> [1,2]==[1,2]
+True
+
+>>> [2,[1,2]]<[2,[1,3]]
+True
+
+
+3. 布尔运算符

@@ -1,0 +1,397 @@
+5.1  字典的使用
+>>> students=['小萌','小智','小强','小张','小李']
+>>> numbers=['000','001','002','003','004']
+>>> index_num=students.index("小智")
+>>> print(f'小智在students中的索引下标是：{index_num}')
+小智在students中的索引下标是：1
+>>> xiaozhi_num=numbers[index_num]
+>>> print(f'小智在numbers中的序号是：{xiaozhi_num}')
+小智在numbers中的序号是：001
+
+>>> print('小智的序号是：',numbers['小智'])
+小智的学号是： 001
+
+
+5.2  创建和使用字典
+>>> dict_define={'小萌': '000', '小智': '001', '小强': '002'} 
+>>> dict_define
+{'小萌': '000', '小智': '001', '小强': '002'}
+
+>>> dict_1={'abc': 456}
+>>> dict_1
+{'abc': 456}
+>>> dict_2={'abc': 123, 98.6: 37}
+>>> dict_2
+{'abc': 123, 98.6: 37}
+
+
+5.2.1  dict函数
+>>> student=[('name','小智'),('number','001')]
+>>> student
+[('name', '小智'), ('number', '001')]
+>>> type(student)
+<class 'list'>
+>>> student_info=dict(student) 
+>>> type(student_info)
+<class 'dict'>
+>>> print(f'学生信息：{student_info}')
+学生信息：{'name': '小智', 'number': '001'}
+>>> student_name=student_info['name']
+>>> print(f'学生姓名：{student_name}')
+学生姓名：小智
+>>> student_num=student_info['number']   #从字典中轻松获取学生序号
+>>> print(f'学生序号：{student_num}')
+学生学号：001
+
+>>> student_info=dict(name='小智',number='001')
+>>> print(f'学生信息：{student_info}')
+学生信息：{'name': '小智', 'number': '001'}
+
+>>> student_info=dict(name='小智',number='001') 
+>>> student_info[1]
+Traceback (most recent call last):
+  File "<pyshell#139>", line 1, in <module>
+    student_info[1]
+KeyError: 1
+
+
+5.2.2  字典的基本操作
+1. 修改字典
+>>> student={'小萌':'000','小智':'001','小强':'002'}
+>>> print(f'更改前，student：{student}')
+更改前，student：{'小萌': '000', '小智': '001', '小强': '002'}
+>>> xiaoqiang_num=student['小强']
+>>> print(f'更改前，小强的序号是：{xiaoqiang_num}')
+更改前，小强的序号是：002
+>>> student['小强']='005'  #更新小强的序号为005
+>>> xiaoqiang_num=student['小强']
+>>> print(f'更改后，小强的序号是：{xiaoqiang_num}')
+更改后，小强的序号是：005
+>>> print(f'更改后，student：{student}')
+更改后，student：{'小萌': '000', '小智': '001', '小强': '005'}
+>>> student['小张']='003'  #添加一个学生
+>>> xiaozhang_num=student['小张']
+>>> print(f'小张的序号是：{xiaozhang_num}')
+小张的序号是：003 
+>>> print(f'添加小张后，student：{student}')
+添加小张后，student：{'小萌': '000', '小智': '001', '小强': '005', '小张': '003'}
+
+
+2. 删除字典元素
+>>> student={'小强': '002', '小萌': '000', '小智': '001', '小张': '003'}
+>>> print(f'删除前:{student}')
+删除前:{'小强': '002', '小萌': '000', '小智': '001', '小张': '003'}
+>>> del student['小张']  #删除 键值为“小张”的键
+>>> print(f'删除后:{student}')
+删除后:{'小强': '002', '小萌': '000', '小智': '001'}
+
+>>> student={'小强': '002', '小萌': '000', '小智': '001', '小张': '003'}
+>>> print(f'删除前:{student}')
+删除前:{'小强': '002', '小萌': '000', '小智': '001', '小张': '003'}
+>>> del student  #删除整个字典
+>>> print(f'删除后:{student}')
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    print(f'删除后:{student}')
+NameError: name 'student' is not defined
+
+
+3. 字典键的特性
+>>> student={'小萌': '000', '小智': '001', '小萌': '002'}  #小萌赋两次值，第一次000，第二次002
+>>> print(f'学生信息：{student}')
+学生信息：{'小萌': '002', '小智': '001'}   #输出结果中小萌的值为002
+
+>>> student={('name',):'小萌','number':'000'} 
+>>> print(f'学生信息：{student}')
+学生信息：{('name',): '小萌', 'number': '000'}
+>>> student={['name']:'小萌','number':'000'}
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    student={['name']:'小萌','number':'000'}
+TypeError: unhashable type: 'list'
+
+
+4. len函数
+>>> student={'小萌': '000', '小智': '001', '小强': '002','小张': '003', '小李': '004'}
+>>> print(f'字典元素个数为：{len(student)}')
+字典元素个数为：5
+
+
+5. type函数
+>>> student={'小萌': '000', '小智': '001', '小强': '002','小张': '003', '小李': '004'}
+>>> print(f'字典的类型为：{type(student)}')
+字典的类型为：<class 'dict'>
+
+
+
+5.3.1  get()方法
+>>> student={'小萌': '000', '小智': '001'}
+>>> print (f'小萌的学号为: {num})')
+
+>>> st={}
+>>> print(st['name'])
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    print(st['name'])
+KeyError: 'name'
+>>> print(st.get('name'))
+None
+>>> name=st.get('name')
+>>> print(f'name的值为：{name}')
+name的值为：None
+
+>>> st={}
+>>> name=st.get('name','未指定')
+>>> print(f'name的值为：{name}')
+name的值为：未指定
+
+
+5.3.2  keys()方法
+>>> student={'小萌': '000', '小智': '001'} 
+>>> all_keys=student.keys()
+>>> print(f'字典student所有键为：{all_keys}')
+字典student所有键为：dict_keys(['小萌', '小智']) 
+>>> print(f'字典student所有键为：{list(all_keys)}')  #keys()得到元组数组，转成list，便于观看
+字典student所有键为：['小萌', '小智']
+
+
+5.3.3  values()方法
+>>> student={'小萌': '000', '小智': '1002','小李':'002'}
+>>> all_values=student.values()
+>>> print(f'student字典所有值为：{all_values}')
+student字典所有值为：dict_values(['000', '1002', '002'])
+>>> print(f'student字典所有值为：{list(all_values)}') #values()得到元组数组，转成list，便于观看
+student字典所有值为：['000', '1002', '002']
+
+
+5.3.4  key in dict方法
+>>> student={'小萌': '000', '小智': '001'}
+>>> xm_in_stu='小萌' in student
+>>> print(f'小萌在student字典中：{xm_in_stu}')
+小萌在student字典中：True
+>>> xq_in_stu='小强' in student
+>>> print(f'小强在student字典中：{xq_in_stu}')
+小强在student字典中：False
+
+
+5.3.5  update()方法
+>>> student={'小萌': '000', '小智': '001'}
+>>> student2={'小李':'003'}
+>>> print(f'原student字典为：{student}')
+原student字典为：{'小萌': '000', '小智': '001'}
+>>> student.update(student2)
+>>> print(f'新student字典为：{student}')
+新student字典为：{'小萌': '000', '小智': '001', '小李': '003'}
+>>> student3={'小李':'005'}
+>>> student.update(student3)  #对相同项覆盖
+>>> print(f'新student字典为：{student}')
+新student字典为：{'小萌': '000', '小智': '001', '小李': '005'}
+
+
+5.3.6  clear()方法
+>>> student={'小萌': '000', '小智': '001', '小强': '002','小张': '003'}
+>>> print(f'字典元素个数为：{len(student)}')
+字典元素个数为：4
+>>> student.clear()
+>>> print(f'字典删除后元素个数为：{len(student)}')
+字典删除后元素个数为：0
+
+示例1：
+>>> x={}
+>>> y=x
+>>> x['key']='value'
+>>> y
+{'key': 'value'}
+>>> x={}
+>>> y
+{'key': 'value'}
+
+示例2：
+>>> x={}
+>>> y=x
+>>> x['key']='value'
+>>> y
+{'key': 'value'}
+>>> x.clear()
+>>> y
+{}
+
+
+5.3.7  copy()方法
+>>> student={'小萌': '000', '小智': '001', '小强': '002','小张': '003'}
+>>> st=student.copy()
+>>> print(f'复制student后得到的st为：{st}')
+复制student后得到的st为：{'小萌': '000', '小智': '001', '小强': '002', '小张': '003'}
+
+>>> student={'小智': '001', 'info':['小张','003','man']}
+>>> st=student.copy()
+>>> st['小智']='1005'
+>>> print(f'更改copy后的st为：{st}')
+更改copy后的st为：{'小智': '1005', 'info': ['小张', '003', 'man']}
+>>> print(f'原字符串为：{student}')
+原字符串为：{'小智': '001', 'info': ['小张', '003', 'man']}
+>>> st['info'].remove('man')
+>>> print(f'变量st中删除man后，st变为：{st}')
+变量st中删除man后，st变为：{'小智': '1005', 'info': ['小张', '003']}
+>>> print(f'删除后student为：{student}')
+删除后student为：{'小智': '001', 'info': ['小张', '003']}
+
+
+5.3.8  fromkeys()方法
+>>> seq=('name', 'age', 'sex')
+>>> info=dict.fromkeys(seq)
+>>> print (f'新的字典为:{info}')
+新的字典为:{'name': None, 'age': None, 'sex': None}
+>>> info=dict.fromkeys(seq, 10)
+>>> print(f'新的字典为:{info}')
+新的字典为:{'name': 10, 'age': 10, 'sex': 10}
+
+
+5.3.9  items()方法
+>>> student={'小萌': '000', '小智': '001'}
+>>> print(f'调用items方法的结果：{student.items()}')
+调用items方法的结果：dict_items([('小萌', '000'), ('小智', '001')])
+
+
+5.3.10  setdefault()方法
+>>> student={'小萌': '000', '小智': '001'}
+>>> xq=student.setdefault('小强')
+>>> print(f'小强的键值为：{xq_default}')
+小强的键值为：None
+>>> xz=student.setdefault('小智')
+>>> print(f'小智的键值为：{xz}')
+小智的键值为：001
+>>> print(f'student字典新值为：{student}')
+student字典新值为：{'小萌': '000', '小智': '001', '小强': None}
+
+>>> student={'小萌': '000', '小智': '001'}
+>>> xq=student.setdefault('小强')
+>>> print(f'小强的键值为：{xq}')
+小强的键值为：None
+>>> print(f'student为：{student}')
+student为：{'小萌': '000', '小智': '001', '小强': None}
+>>> xz=student.setdefault('小张','006') 
+>>> print(f'小张的键值为：{xz}')
+小张的键值为：006
+>>> print(f'student为：{student}')
+student为：{'小萌': '000', '小智': '001', '小强': None, '小张': '006'}
+
+
+
+5.4  集合
+>>> student={}
+>>> print(f'student对象的类型为:{type(student)}')
+student对象的类型为:<class 'dict'>
+>>> number={1,2,3}
+>>> print(f'number对象的类型为:{type(number)}')
+number对象的类型为:<class 'set'>
+
+>>> numbers={1,2,3,4,5,3,2,1,6}
+>>> numbers
+{1, 2, 3, 4, 5, 6}
+
+>>> numbers={1,2,3,4,5}
+>>> numbers[2]
+Traceback (most recent call last):
+  File "<pyshell#143>", line 1, in <module>
+    numbers[2]
+TypeError: 'set' object does not support indexing
+
+
+5.4.1  创建集合
+>>> numbers={1,2,3,4,5}
+>>> print(f'numbers变量的类型为:{type(numbers)}')
+numbers变量的类型为:<class 'set'>
+>>> numbers
+{1, 2, 3, 4, 5}
+>>> name=set('abc')  #一个元素，仔细观察输出结果
+>>> name
+{'a', 'b', 'c'}
+>>> print(f'name变量的类型为:{type(name)}')
+name变量的类型为:<class 'set'>
+>>> students=set(['小萌','小智'])   #一个列表
+>>> students
+{'小萌', '小智'}
+>>> print(f'students变量的类型为:{type(students)}')
+students变量的类型为:<class 'set'>
+>>> stu=set(('小萌','小智'))    #一个元组
+>>> stu
+{'小萌', '小智'}
+>>> print(f'stu变量的类型为:{type(stu)}')
+stu变量的类型为:<class 'set'>
+
+
+5.4.2  集合方法
+1. add()方法
+>>> numbers=set([1,2])
+>>> print(f'numbers变量为:{numbers}')
+numbers变量为:{1, 2}
+>>> numbers.add(3)
+>>> print(f'增加元素后，numbers变量为:{numbers}')
+增加元素后，numbers变量为:{1, 2, 3}
+
+2. remove()方法
+>>> students=set(['小萌','小智','小张'])
+>>> print(f'students变量为:{students}')
+students变量为:{'小萌', '小张', '小智'}
+>>> students.remove('小张')
+>>> print(f'删除元素小张后，students变量为:{students}')
+删除元素小张后，students变量为:{'小萌', '小智'}
+
+3. in和not in
+>>> numbers={1,2,3,4,5} 
+>>> 2 in numbers
+True 
+>>> 2 not in numbers
+False 
+>>> 'a' in numbers
+False 
+>>> 'a' not in numbers
+True
+
+
+
+5.5  牛刀小试——字典合并与排序
+>>> def merge_range():
+...     lan_ver = {"lan": "python", "v": "3.7"}
+...     rea_ai = {"why": "hobby", "how": "do"}
+...     d_merge = dict()
+...     d_merge.update(lan_ver)
+...     d_merge.update(rea_ai)
+...     desc_list = sorted(dt2ls(d_merge), key=lambda x:x[0], reverse=True)
+...     desc_dict = dict(desc_list)
+...     asc_list = sorted(dt2ls(d_merge), key=lambda x:x[0], reverse=False)
+...     asc_dict = dict(asc_list)
+...     print(f'合并后的结果：{d_merge}')
+      print(f'按照第0个元素降序排列：{desc_dict}' )
+print(f'按照第0个元素升序排列：{asc_dict}' )
+...
+>>> def dt2ls(dic:dict):
+...     """ 将字典转化为列表 """
+...     keys = dic.keys()
+...     values = dic.values()
+...     lst = [(key, val) for key, val in zip(keys, values)]
+...     return lst
+...
+>>> merge_range()
+
+合并后的结果： {'lan': 'python', 'v': '3.7', 'why': 'hobby', 'how': 'do'}
+按照第0个元素降序排列： {'why': 'hobby', 'v': '3.7', 'lan': 'python', 'how': 'do'}
+按照第0个元素升序排列： {'how': 'do', 'lan': 'python', 'v': '3.7', 'why': 'hobby'}
+
+
+
+5.6  调    试
+>>> students = ['小萌', '小智', '小强', '小张', '小李']
+>>> numbers = [000, 001, 002, 003, 004]
+>>> print('小智的学号是：',numbers[students.index('小智')])
+小智的学号是： 001
+
+>>> students = ['小萌', '小智', '小强', '小张', '小李']
+>>> numbers=[0000,0001,0002,0003,0004]
+SyntaxError: invalid token
+
+>>> student={'小萌':'1001','小智':'1002','小强':'1003'}
+>>> print('小萌的学号是：%(小萌)10s' % student) #字符宽度为10
+小萌的学号是：      1001
+
